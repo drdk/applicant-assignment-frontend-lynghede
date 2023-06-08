@@ -10,6 +10,16 @@ declare global {
     seriesTitle: string;
     description: string;
     imageUri: string;
+    genre: string;
+    runtime: number;
+    startDate: string;
+    endDate: string;
+    parentalRating: ParentalRating;
+  };
+
+  type ParentalRating = {
+    rating: string;
+    description: string;
   };
 }
 
