@@ -14,7 +14,7 @@ export function convertDateTime(date: string) {
 }
 
 export function displayRating(rating: ParentalRating) {
-  return rating.rating.includes("EXCEPT") ? "" : rating.description;
+  return !rating.rating.includes("EXCEPT");
 }
 
 /**
