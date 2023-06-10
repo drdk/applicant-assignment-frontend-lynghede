@@ -2,7 +2,8 @@ import { convertDateTime } from "../helpers/GeneralHelpers";
 
 export async function fetchFeed() {
   const res = await fetch(
-    "https://www.dr.dk/mu-online/api/1.3/list/view/lastchance?limit=5&offset=0&channel=dr1"
+    "https://www.dr.dk/mu-online/api/1.3/list/view/lastchance?limit=10&offset=5&channel=dr1"
+    // "https://www.dr.dk/mu-online/api/1.3/list/view/lastchance?limit=5&offset=0&channel=dr1"
   );
 
   if (!res.ok) {
