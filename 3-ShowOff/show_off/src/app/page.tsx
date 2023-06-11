@@ -10,7 +10,7 @@ export default async function Home() {
       <div className="p-4 flex flex-wrap gap-4">
         {programData.map((program, index) => (
           <div
-            className="lg:w-1/4 w-full relative flex flex-auto flex-col border-2 border-transparent rounded-xl overflow-hidden"
+            className="lg:w-1/4 w-full relative flex flex-auto flex-col  rounded-xl overflow-hidden shadow-lg shadow-slate-600 "
             key={index}>
             <div
               style={{
