@@ -1,11 +1,11 @@
-import { getProgramData } from "@/services/Program";
 import { displayRating, convertRuntime } from "@/helpers/GeneralHelpers";
+import { getProgramData } from "@/services/Program";
 
 export default async function Home() {
-  const programData: Program[] = await getProgramData("10", "10");
+  const programData: Program[] = await getProgramData(`10`, `5`);
 
   return (
-    <main>
+    <main className="p-4">
       <div className="p-4 flex flex-wrap gap-8">
         {programData.map((program, index) => (
           <div
@@ -22,7 +22,7 @@ export default async function Home() {
               }}>
               <div className="h-full w-full absolute top-0 left-0 bg-gradient-dr"></div>
             </div>
-            <div className="absolute bottom-12 flex flex-col z-10 p-8 w-full">
+            <div className="absolute bottom-0 flex flex-col z-10 p-8 w-full">
               <h1 className="text-3xl 2xl:text-4xl break-words font-bold">
                 {program.title}
               </h1>
@@ -40,9 +40,9 @@ export default async function Home() {
               </div>
             </div>
             <div className="absolute h-full w-full flex items-center">
-              <div className="flex bg-red-dr -skew-y-6 p-4 w-full items-center mb-4">
+              <div className="flex bg-black -skew-y-6 p-4 w-full items-center mb-4 ">
                 <p className="text-2xl 2xl:text-4xl font-black uppercase text-center w-full">
-                  Udløber: {program.endDate}
+                  Udløber {program.endDate}
                 </p>
               </div>
             </div>

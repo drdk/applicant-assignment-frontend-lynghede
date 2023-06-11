@@ -24,8 +24,12 @@ export async function fetchFeed(customParams = {}) {
  * @param offset numer as string
  * @returns Program[]
  */
-export async function getProgramData(limit: string, offset: string) {
-  const feed = await fetchFeed({ limit: limit, offset: offset });
+export async function getProgramData(limit: string, offset?: string) {
+  const params = {
+    limit: limit,
+    offset: offset ? offset : "0",
+  };
+  const feed = await fetchFeed(params);
   const items = feed.Items;
 
   if (!items || items.length === 0) {
