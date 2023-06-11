@@ -1,4 +1,4 @@
-import { convertDateTime } from "../helpers/GeneralHelpers";
+import { convertDateTime } from "@/helpers/GeneralHelpers";
 
 const DR_FEED_URI = "https://www.dr.dk/mu-online/api/1.3/list/view/lastchance";
 

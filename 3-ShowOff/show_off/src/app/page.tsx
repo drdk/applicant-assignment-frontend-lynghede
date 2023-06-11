@@ -1,5 +1,5 @@
-import { getProgramData } from "../../services/Program";
-import { displayRating, convertRuntime } from "../../helpers/GeneralHelpers";
+import { getProgramData } from "@/services/Program";
+import { displayRating, convertRuntime } from "@/helpers/GeneralHelpers";
 
 export default async function Home() {
   const programData: Program[] = await getProgramData("10", "10");
