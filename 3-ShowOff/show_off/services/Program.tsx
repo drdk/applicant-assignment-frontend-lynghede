@@ -1,10 +1,15 @@
 import { convertDateTime } from "../helpers/GeneralHelpers";
 
-export async function fetchFeed() {
-  const res = await fetch(
-    "https://www.dr.dk/mu-online/api/1.3/list/view/lastchance?limit=10&offset=5&channel=dr1"
-    // "https://www.dr.dk/mu-online/api/1.3/list/view/lastchance?limit=5&offset=0&channel=dr1"
-  );
+const DR_FEED_URI = "https://www.dr.dk/mu-online/api/1.3/list/view/lastchance";
+
+/**
+ * Fetch DR about to expire feed
+ * @param customParams
+ */
+export async function fetchFeed(customParams = {}) {
+  const params = { channel: "dr1", ...customParams };
+
+  const res = await fetch(DR_FEED_URI + "?" + new URLSearchParams(params));
 
   if (!res.ok) {
     throw new Error("Failed to fetch data");
@@ -13,13 +18,19 @@ export async function fetchFeed() {
   return res.json();
 }
 
-export async function getProgramData() {
-  const feed = await fetchFeed();
+/**
+ * Fetch list of programs
+ * @param limit number as string
+ * @param offset numer as string
+ * @returns Program[]
+ */
+export async function getProgramData(limit: string, offset: string) {
+  const feed = await fetchFeed({ limit: limit, offset: offset });
   const items = feed.Items;
 
-  // if (!items.items || items.items.length > 0) {
-  //     throw new Error('No programs to fetch')
-  // }
+  if (!items || items.length === 0) {
+    throw new Error("No programs to fetch");
+  }
 
   const programs: Program[] = [];
 
@@ -28,7 +39,7 @@ export async function getProgramData() {
       title: entry.Title,
       seriesTitle: entry.SeriesTitle,
       description: entry.Subtitle,
-      imageUri: entry.PrimaryImageUri,
+      imageUri: entry.PrimaryImageUri ? entry.PrimaryImageUri : "/molle.jpeg",
       genre: entry.OnlineGenreText,
       runtime: entry.PrimaryAsset.DurationInMilliseconds,
       startDate: convertDateTime(entry.PrimaryAsset.StartPublish),
