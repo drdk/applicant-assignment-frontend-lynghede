@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { getProgramData } from "../../services/Program";
 import { displayRating, convertRuntime } from "../../helpers/GeneralHelpers";
 
@@ -7,10 +6,10 @@ export default async function Home() {
 
   return (
     <main>
-      <div className="p-4 flex flex-wrap gap-4">
+      <div className="p-4 flex flex-wrap gap-8">
         {programData.map((program, index) => (
           <div
-            className="lg:w-1/4 w-full relative flex flex-auto flex-col  rounded-xl overflow-hidden shadow-lg shadow-slate-600 "
+            className="lg:w-1/4 w-full relative flex flex-auto flex-col rounded-xl overflow-hidden shadow-lg shadow-slate-600 "
             key={index}>
             <div
               style={{
@@ -24,13 +23,12 @@ export default async function Home() {
               <div className="h-full w-full absolute top-0 left-0 bg-gradient-dr"></div>
             </div>
             <div className="absolute bottom-12 flex flex-col z-10 p-8 w-full">
-              <h2 className="text-3xl 2xl:text-4xl break-words font-bold">
+              <h1 className="text-3xl 2xl:text-4xl break-words font-bold">
                 {program.title}
-              </h2>
-              {/* <h3 className="text-2xl line-clamp-3">{program.description}</h3> */}
+              </h1>
               <div className="flex flex-col text-sm 2xl:text-xl pt-2 tracking-wide">
-                <div className="flex space-x-4  ">
-                  <p className="self-center">{program.genre.toUpperCase()}</p>
+                <div className="flex space-x-4">
+                  <p className="self-center uppercase">{program.genre}</p>
                   {displayRating(program.parentalRating) && (
                     <p className=" text-center border-[1px] px-2 rounded-md">
                       {program.parentalRating.description}
