@@ -2,7 +2,9 @@ export {};
 
 declare global {
   type Items = {
-    items: Program[];
+    programs: Program[];
+    paging: Paging;
+    totalSize: number;
   };
 
   type Program = {
@@ -20,5 +22,11 @@ declare global {
   type ParentalRating = {
     rating: string;
     description: string;
+  };
+
+  type Paging = {
+    source: string;
+    next?: string;
+    previous?: string;
   };
 }

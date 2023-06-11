@@ -2,7 +2,7 @@ import { displayRating, convertRuntime } from "@/helpers/GeneralHelpers";
 import { getProgramData } from "@/services/Program";
 
 export default async function Home() {
-  const programData: Program[] = await getProgramData(`10`, `5`);
+  const programData: Program[] = await getProgramData(`20`, `0`);
 
   return (
     <main className="p-4">
